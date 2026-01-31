@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using FaceDetection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -16,33 +18,31 @@ public class PlayerController : MonoBehaviour
     // (¬_¬")
     public UnityEvent OnTargetHit; 
     
+    /// <summary>
+    /// The current expression of the player.
+    /// </summary>
+    public Expression CurrentExpression;
+    
     [SerializeField] 
     private CircleCollider2D m_ControllerCircleCollider;
-    
-    [SerializeField] 
-    [Tooltip("The input action used to attempt to score in the event of a target overlap.")]
-    private InputAction m_PlayerScoreInput;
-    
-    private void OnEnable()
-        => m_PlayerScoreInput.Enable();
-
-    private void OnDisable()
-        => m_PlayerScoreInput.Disable();
 
     private void Update()
     {
-        if (!m_PlayerScoreInput.WasPressedThisFrame())
-            return;
-        
         List<Collider2D> colliders = new();
         int hits = m_ControllerCircleCollider.Overlap(colliders);
-        if (hits > 0)
+        if (hits <= 0)
+            return;
+        
+        // Take the first collider since only one target should be intersected at a time. 
+        Collider2D intersectedCollider = colliders.First();
+        
+        // Check if the player's current expression matches the mask.
+        GameObject intersectedObject = intersectedCollider.gameObject;
+        TargetableMask mask = intersectedObject.GetComponent<TargetableMask>();
+        if (mask is not null && mask.ExpressionValue == CurrentExpression)
         {
-            // Take the first collider since only one target should be intersected at a time. 
-            Collider2D intersectedCollider = colliders.First();
-            
             // Destroy the intersected target game object and broadcast that a target was hit.
-            Destroy(intersectedCollider.gameObject);
+            Destroy(intersectedObject);
             OnTargetHit?.Invoke();
         }
     }

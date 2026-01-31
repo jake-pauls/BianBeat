@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace FaceDetection
+{
+    /// <summary>
+    /// Enumeration of expressions the face detection tracks.
+    /// Idea: We could use 'Flags' because a player may match multiple emotions depending on our heuristic.
+    /// </summary>
+    [Serializable]
+    public enum Expression
+    {
+        None = 0,
+        Happy,
+        Sad
+    }
+}

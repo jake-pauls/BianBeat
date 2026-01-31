@@ -1,3 +1,4 @@
+using FaceDetection;
 using UnityEngine;
 
 /// <summary>
@@ -5,10 +6,19 @@ using UnityEngine;
 /// </summary>
 public class TargetableMask : MonoBehaviour
 {
+    [HideInInspector]
+    public Expression ExpressionValue;
+    
     [SerializeField] 
     [Min(0)]
     [Tooltip("The speed for the mask once it is spawned on the track.")]
     private float m_Velocity;
+
+    private void Awake()
+    {
+        // TODO: Something should probably set the expression value on masks that spawn.
+        ExpressionValue = Expression.Sad;
+    }
 
     private void Update()
     {

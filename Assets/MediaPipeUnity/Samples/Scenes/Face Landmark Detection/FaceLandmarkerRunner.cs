@@ -132,14 +132,6 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
             if (taskApi.TryDetect(image, imageProcessingOptions, ref result))
             {
               _faceLandmarkerResultAnnotationController.DrawNow(result);
-
-#if false
-              // Set the above ifdef to true when you'd like to export the categories found on the image to a ScriptableObject.
-              if (imageSource is StaticImageSource staticImageSource)
-              {
-                ExpressionSampleExporter.ExportCategories(result.faceBlendshapes.SelectMany(c => c.categories), staticImageSource.image);
-              }
-#endif
             }
             else
             {
@@ -150,11 +142,6 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
             if (taskApi.TryDetectForVideo(image, GetCurrentTimestampMillisec(), imageProcessingOptions, ref result))
             {
               _faceLandmarkerResultAnnotationController.DrawNow(result);
-              
-#if false
-              // Set the above ifdef to true when you'd like to export the categories found on the image to a ScriptableObject.
-              ExpressionSampleExporter.ExportCategories(result.faceBlendshapes.SelectMany(c => c.categories), null);
-#endif
             }
             else
             {
