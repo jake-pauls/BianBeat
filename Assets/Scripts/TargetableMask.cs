@@ -14,17 +14,42 @@ public class TargetableMask : MonoBehaviour
     [Tooltip("The speed for the mask once it is spawned on the track.")]
     private float m_Velocity;
 
+    [SerializeField]
+    [Tooltip("Reference to the PlayerController to move towards.")]
+    private PlayerController m_TargetPlayerController;
+
+    private Vector3 m_TargetPosition;
+
     private void Awake()
     {
         // TODO: Something should probably set the expression value on masks that spawn.
         ExpressionValue = Expression.Sad;
     }
 
+    private void Start()
+    {
+        // Find PlayerController
+        if (m_TargetPlayerController == null)
+        {
+            m_TargetPlayerController = FindObjectOfType<PlayerController>();
+        }
+
+        // Set target position
+        if (m_TargetPlayerController != null)
+        {
+            m_TargetPosition = m_TargetPlayerController.transform.position;
+        }
+    }
+
     private void Update()
     {
-        // Move across the track.
-        Vector3 pos = transform.position;
-        pos.x -= m_Velocity * Time.deltaTime;
-        transform.position = pos;
+        if (m_TargetPosition != null)
+        {
+            //Calculate the direction to the target
+            Vector3 direction = (m_TargetPosition - transform.position).normalized;
+
+            // Move towards target at constant velocity
+            transform.position += direction * m_Velocity * Time.deltaTime;
+        }
     }
 }
