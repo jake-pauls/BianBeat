@@ -1,12 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 using FaceDetection;
+using UnityEngine.Events;
 
 /// <summary>
 /// Manager class that spawns targets on the rhythm track.
 /// </summary>
 public class TargetSpawner : MonoBehaviour
 {
+    /// <summary>
+    /// Invoked when the countdown finishes and the beatmap song starts.
+    /// </summary>
+    public UnityEvent OnBeatmapMusicStarted;
+    
     [SerializeField] 
     [Tooltip("The prefab that the manager will spawn when the cooldown elapses.")]
     private GameObject[] m_TargetMaskPrefabs;
@@ -179,5 +185,6 @@ public class TargetSpawner : MonoBehaviour
         m_GameStartTime = Time.time;
         
         AudioManager.PlaySound(AudioType.BEATMAPMUSIC);
+        OnBeatmapMusicStarted.Invoke();
     }
 }

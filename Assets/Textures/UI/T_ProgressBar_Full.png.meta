@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: b4000eca3cc482c47b21a774512e76c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2653129578299338986
+    second: T_ProgressBar_Full_0
+  - first:
+      213: -3050375135189528148
+    second: T_ProgressBar_Full_1
+  - first:
+      213: -35743741320601124
+    second: T_ProgressBar_Full_2
+  - first:
+      213: 2183624578404599475
+    second: T_ProgressBar_Full_3
+  - first:
+      213: 4334916376339407462
+    second: T_ProgressBar_Full_4
+  - first:
+      213: -6766437448584642069
+    second: T_ProgressBar_Full_5
+  - first:
+      213: -1349143633168443630
+    second: T_ProgressBar_Full_6
+  - first:
+      213: 2933440280922648351
+    second: T_ProgressBar_Full_7
+  - first:
+      213: -8537787120125435222
+    second: T_ProgressBar_Full_8
+  - first:
+      213: 6108390804914651363
+    second: T_ProgressBar_Full_9
+  - first:
+      213: 1648732083430286512
+    second: T_ProgressBar_Full_10
+  - first:
+      213: -3621730042678990192
+    second: T_ProgressBar_Full_11
+  - first:
+      213: -5992246433598052548
+    second: T_ProgressBar_Full_12
+  - first:
+      213: 7432613639026293567
+    second: T_ProgressBar_Full_13
+  - first:
+      213: 1014371623075823281
+    second: T_ProgressBar_Full_14
+  - first:
+      213: -1614742248982964018
+    second: T_ProgressBar_Full_15
+  - first:
+      213: 4017485352346993265
+    second: T_ProgressBar_Full_16
+  - first:
+      213: 8004816162505647833
+    second: T_ProgressBar_Full_17
+  - first:
+      213: 8559697150495688538
+    second: T_ProgressBar_Full_18
+  - first:
+      213: 4739685261304923986
+    second: T_ProgressBar_Full_19
+  - first:
+      213: -9150035229327459418
+    second: T_ProgressBar_Full_20
+  - first:
+      213: -4448653466786706351
+    second: T_ProgressBar_Full_21
+  - first:
+      213: 8346549725453952436
+    second: T_ProgressBar_Full_22
+  - first:
+      213: 5885718614414842708
+    second: T_ProgressBar_Full_23
+  - first:
+      213: 8139035286346711756
+    second: T_ProgressBar_Full_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 47
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae03d996b4fc1d420800000000000000
+      internalID: 2653129578299338986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca11853e9f3eaa5d0800000000000000
+      internalID: -3050375135189528148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_2
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd164a3b143018ff0800000000000000
+      internalID: -35743741320601124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b64e961cfacd4e10800000000000000
+      internalID: 2183624578404599475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_4
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662ebb61a77b82c30800000000000000
+      internalID: 4334916376339407462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_5
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1463a9df8c812a0800000000000000
+      internalID: -6766437448584642069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_6
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 217d3028301e64de0800000000000000
+      internalID: -1349143633168443630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_7
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f673ab46ca5b820800000000000000
+      internalID: 2933440280922648351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_8
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa2a40179dfa38980800000000000000
+      internalID: -8537787120125435222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_9
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e0433cc21d55c450800000000000000
+      internalID: 6108390804914651363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_10
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4e6a2381971e610800000000000000
+      internalID: 1648732083430286512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_11
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a22c507b70dbdc0800000000000000
+      internalID: -3621730042678990192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_12
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3769ceed9347dca0800000000000000
+      internalID: -5992246433598052548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_13
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bb2ea99b2f52760800000000000000
+      internalID: 7432613639026293567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_14
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bebba7ed95c31e00800000000000000
+      internalID: 1014371623075823281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_15
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec81e85da784799e0800000000000000
+      internalID: -1614742248982964018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_16
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1724af474a9f0c730800000000000000
+      internalID: 4017485352346993265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_17
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6647273e1d61f60800000000000000
+      internalID: 8004816162505647833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_18
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a57083805372ac670800000000000000
+      internalID: 8559697150495688538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_19
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2570c3b12aeb6c140800000000000000
+      internalID: 4739685261304923986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_20
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 0
+        width: 49
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab70a9107b840180800000000000000
+      internalID: -9150035229327459418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_21
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c4e5fed353342c0800000000000000
+      internalID: -4448653466786706351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_22
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b521ddd0c6e4d370800000000000000
+      internalID: 8346549725453952436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_23
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0
+        width: 48
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45bd91c55e54ea150800000000000000
+      internalID: 5885718614414842708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_ProgressBar_Full_24
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 0
+        width: 47
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2c0117879a3f070800000000000000
+      internalID: 8139035286346711756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      T_ProgressBar_Full_0: 2653129578299338986
+      T_ProgressBar_Full_1: -3050375135189528148
+      T_ProgressBar_Full_10: 1648732083430286512
+      T_ProgressBar_Full_11: -3621730042678990192
+      T_ProgressBar_Full_12: -5992246433598052548
+      T_ProgressBar_Full_13: 7432613639026293567
+      T_ProgressBar_Full_14: 1014371623075823281
+      T_ProgressBar_Full_15: -1614742248982964018
+      T_ProgressBar_Full_16: 4017485352346993265
+      T_ProgressBar_Full_17: 8004816162505647833
+      T_ProgressBar_Full_18: 8559697150495688538
+      T_ProgressBar_Full_19: 4739685261304923986
+      T_ProgressBar_Full_2: -35743741320601124
+      T_ProgressBar_Full_20: -9150035229327459418
+      T_ProgressBar_Full_21: -4448653466786706351
+      T_ProgressBar_Full_22: 8346549725453952436
+      T_ProgressBar_Full_23: 5885718614414842708
+      T_ProgressBar_Full_24: 8139035286346711756
+      T_ProgressBar_Full_3: 2183624578404599475
+      T_ProgressBar_Full_4: 4334916376339407462
+      T_ProgressBar_Full_5: -6766437448584642069
+      T_ProgressBar_Full_6: -1349143633168443630
+      T_ProgressBar_Full_7: 2933440280922648351
+      T_ProgressBar_Full_8: -8537787120125435222
+      T_ProgressBar_Full_9: 6108390804914651363
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum AudioType
 {
@@ -35,4 +36,7 @@ public class AudioManager : MonoBehaviour
     {
         m_Instance.m_AudioSource.PlayOneShot(m_Instance.m_AudioList[(int)audio], volume);
     }
+
+    public static float GetSoundDuration(AudioType audio)
+        => m_Instance.m_AudioList[(int)audio].length;
 }
