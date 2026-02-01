@@ -1818,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _irisCircleWidth
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _annotationPrefab
@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _faceLandmarkRadius
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _irisLandmarkRadius
@@ -1838,7 +1838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _faceConnectionWidth
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _faceLandmarkColor.a
@@ -1858,7 +1858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _irisLandmarkColor.a
-      value: 0
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 8827517518088774293, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       propertyPath: _irisLandmarkColor.b
