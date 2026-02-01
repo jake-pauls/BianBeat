@@ -51,6 +51,9 @@ MonoBehaviour:
   - width: 1920
     height: 1080
     frameRate: 30
+  - width: 3440
+    height: 1440
+    frameRate: 30
   _availableStaticImageSources: []
   _defaultAvailableStaticImageResolutions:
   - width: 512
