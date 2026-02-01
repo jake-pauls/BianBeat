@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6794370602847319149}
   - component: {fileID: 5456815299225016778}
-  - component: {fileID: 5883069349518707784}
+  - component: {fileID: 1995688216268648069}
   m_Layer: 0
   m_Name: HappyMask
   m_TagString: Untagged
@@ -161,7 +161,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &5883069349518707784
+--- !u!114 &1995688216268648069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,14 +183,23 @@ MonoBehaviour:
       time: 0
       value: 1
       inSlope: 0
-      outSlope: 0
+      outSlope: 5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 3
+      inSlope: 2.5
+      outSlope: 0.5
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 3
+      value: 7
       inSlope: 0
       outSlope: 0
       tangentMode: 0
