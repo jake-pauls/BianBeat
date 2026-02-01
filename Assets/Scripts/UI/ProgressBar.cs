@@ -39,6 +39,6 @@ public class ProgressBar : MonoBehaviour
         if (!m_BeatmapMusicStarted)
             return;
         
-        m_ProgressBarImage.fillAmount -= Time.deltaTime / m_BeatmapMusicDuration;
+        m_ProgressBarImage.fillAmount += Time.deltaTime / m_BeatmapMusicDuration;
     }
 }
