@@ -14,15 +14,20 @@ public class TargetableMask : MonoBehaviour
     [SerializeField] 
     [Min(0)]
     [Tooltip("The speed for the mask once it is spawned on the track.")]
-    private float m_Velocity;
+    private float m_Velocity = 5f;
 
     [SerializeField]
     [Tooltip("Time a target can be on top of the player before it is destroyed.")]
     private float m_MissTimeout = 0.5f;
 
     [SerializeField]
-    [Tooltip("Animation curve for scaling. X-axis is progress (0=spawn, 1=center), Y-axis is scale multiplier. Default: scales from 1x at spawn to 3x at center.")]
-    private AnimationCurve m_ScaleCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 3f);
+    [Tooltip("Animation curve for scaling. X-axis is progress (0=spawn, 1=center), Y-axis is scale multiplier. Default: scales from 1x at spawn to 7x at center.")]
+    // private AnimationCurve m_ScaleCurve = AnimationCurve.EaseOut(0f, 1f, 1f, 7f);
+    private AnimationCurve m_ScaleCurve = new AnimationCurve(
+    new Keyframe(0f, 1f, 0f, 5f),
+    new Keyframe(0.1f, 3f, 2.5f, 0.5f),
+    new Keyframe(1f, 7f, 0f, 0f)
+);
 
     public UnityEvent OnTargetMissed;
 
@@ -59,11 +64,27 @@ public class TargetableMask : MonoBehaviour
     {
         if (m_TargetPosition != null && m_TotalDistance > 0f)
         {
-            //Calculate the direction to the target
-            Vector3 direction = (m_TargetPosition - transform.position).normalized;
+            // //Calculate the direction to the target
+            // Vector3 direction = (m_TargetPosition - transform.position).normalized;
 
-            // Move towards target at constant velocity
-            transform.position += direction * m_Velocity * Time.deltaTime;
+            // // Move towards target at constant velocity
+            // transform.position += direction * m_Velocity * Time.deltaTime;
+
+            float distanceToTarget = Vector3.Distance(transform.position, m_TargetPosition);
+
+            // Stop moving if we are close to the target
+            float minDistance = 0.01f;
+            if (distanceToTarget > minDistance)
+            {
+                // Using Vector3.MoveTowards to move towards the target
+                float moveDistance = m_Velocity * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, m_TargetPosition, moveDistance);
+            }
+            else
+            {
+                // Snap to target position when very close to prevent jittering
+                transform.position = m_TargetPosition;
+            }
 
             // Calculate progress (0 = at spawn, 1 = at center)
             float currentDistance = Vector3.Distance(transform.position, m_TargetPosition);

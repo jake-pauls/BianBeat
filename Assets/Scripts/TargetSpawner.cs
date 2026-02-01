@@ -44,7 +44,7 @@ public class TargetSpawner : MonoBehaviour
     //TODO: Can likely separate out game manager logic instead of having it i the TargetSpawner. Putting it in here for now for convenience.
     private float m_CurrentTime;
     private float m_GameStartTime;
-    private bool m_isCountingDown = true;
+    // private bool m_isCountingDown = true; // TODO: Might need this on game start perhaps? Not doing anything with it for now.
     private bool m_GameStarted = false;
     private int m_CurrentNoteIndex = 0;
 
@@ -180,7 +180,7 @@ public class TargetSpawner : MonoBehaviour
             yield return null;
         }
 
-        m_isCountingDown = false;
+        // m_isCountingDown = false; // TODO: Might need this on game start perhaps? Not doing anything with it for now.
         m_GameStarted = true;
         m_GameStartTime = Time.time;
         
