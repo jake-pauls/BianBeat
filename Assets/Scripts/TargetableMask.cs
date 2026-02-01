@@ -29,12 +29,6 @@ public class TargetableMask : MonoBehaviour
     private Coroutine m_MissTimeoutCoroutine;
     private bool m_IsDestroyed = false;
 
-    private void Awake()
-    {
-        // TODO: Something should probably set the expression value on masks that spawn.
-        ExpressionValue = Expression.Shocked;
-    }
-
     private void Start()
     {
         // Find PlayerController
@@ -93,6 +87,7 @@ public class TargetableMask : MonoBehaviour
         if (m_IsOverlapping && !m_IsDestroyed)
         {
             OnTargetMissed?.Invoke();
+            Debug.Log("Target missed!");
             Destroy(gameObject);
         }
     }

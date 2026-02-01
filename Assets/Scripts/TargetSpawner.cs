@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using FaceDetection;
 
 /// <summary>
 /// Manager class that spawns targets on the rhythm track.
@@ -83,12 +84,12 @@ public class TargetSpawner : MonoBehaviour
 
         while (m_CurrentNoteIndex < m_SpawnTimes.Count && currentGameTime >= m_SpawnTimes[m_CurrentNoteIndex])
         {
-            SpawnTarget(m_BeatmapData.notes[m_CurrentNoteIndex]);
+            SpawnTarget(m_BeatmapData.notes[m_CurrentNoteIndex], m_BeatmapData.notes[m_CurrentNoteIndex].expression);
             m_CurrentNoteIndex++;
         }
     }
 
-    private void SpawnTarget(BeatmapNote note)
+    private void SpawnTarget(BeatmapNote note, Expression expression)
     {
         // Randomly select one of the spawn points
         if (m_SpawnPoints == null || m_SpawnPoints.Length == 0)
@@ -99,9 +100,10 @@ public class TargetSpawner : MonoBehaviour
 
         int randomIndex = Random.Range(0, m_SpawnPoints.Length);
         Transform selectedSpawnPoint = m_SpawnPoints[randomIndex];
-        
+
         GameObject target = Instantiate(m_TargetPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
         TargetableMask mask = target.GetComponent<TargetableMask>();
+        mask.ExpressionValue = expression;
     }
 
     private void CalculateSpawnTimes()
