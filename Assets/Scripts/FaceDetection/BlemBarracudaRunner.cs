@@ -37,29 +37,77 @@ namespace FaceDetection
 
         private Queue<float[]> m_InferenceQueue = new();
         private float[] m_SmoothedProbabilities = new float[(int)Expression.Max];
-        
-        private static List<string> s_CsvCategoryColumns;
-        private const string MEDIA_PIPE_CATEGORIES_CSV_HEADER = "browDownLeft,browDownRight,browInnerUp,browOuterUpLeft,browOuterUpRight,cheekPuff,cheekSquintLeft,cheekSquintRight,eyeBlinkLeft,eyeBlinkRight,eyeLookDownLeft,eyeLookDownRight,eyeLookInLeft,eyeLookInRight,eyeLookOutLeft,eyeLookOutRight,eyeLookUpLeft,eyeLookUpRight,eyeSquintLeft,eyeSquintRight,eyeWideLeft,eyeWideRight,jawForward,jawLeft,jawOpen,jawRight,mouthClose,mouthDimpleLeft,mouthDimpleRight,mouthFrownLeft,mouthFrownRight,mouthFunnel,mouthLeft,mouthLowerDownLeft,mouthLowerDownRight,mouthPressLeft,mouthPressRight,mouthPucker,mouthRight,mouthRollLower,mouthRollUpper,mouthShrugLower,mouthShrugUpper,mouthSmileLeft,mouthSmileRight,mouthStretchLeft,mouthStretchRight,mouthUpperUpLeft,mouthUpperUpRight,noseSneerLeft,noseSneerRight";
+
+        /// <summary>
+        /// Ordered list of feature categories exported by MediaPipe and expected by the BLEM model.
+        /// Do not move this to an unordered collection (e.g., <see cref="HashSet"/>) as the model requires
+        /// these inputs to be in a specific order!
+        /// </summary>
+        private static List<string> s_MediaPipeCategoriesOrdered = new()
+        {
+            "browDownLeft",
+            "browDownRight",
+            "browInnerUp",
+            "browOuterUpLeft",
+            "browOuterUpRight",
+            "cheekPuff",
+            "cheekSquintLeft",
+            "cheekSquintRight",
+            "eyeBlinkLeft",
+            "eyeBlinkRight",
+            "eyeLookDownLeft",
+            "eyeLookDownRight",
+            "eyeLookInLeft",
+            "eyeLookInRight",
+            "eyeLookOutLeft",
+            "eyeLookOutRight",
+            "eyeLookUpLeft",
+            "eyeLookUpRight",
+            "eyeSquintLeft",
+            "eyeSquintRight",
+            "eyeWideLeft",
+            "eyeWideRight",
+            "jawForward",
+            "jawLeft",
+            "jawOpen",
+            "jawRight",
+            "mouthClose",
+            "mouthDimpleLeft",
+            "mouthDimpleRight",
+            "mouthFrownLeft",
+            "mouthFrownRight",
+            "mouthFunnel",
+            "mouthLeft",
+            "mouthLowerDownLeft",
+            "mouthLowerDownRight",
+            "mouthPressLeft",
+            "mouthPressRight",
+            "mouthPucker",
+            "mouthRight",
+            "mouthRollLower",
+            "mouthRollUpper",
+            "mouthShrugLower",
+            "mouthShrugUpper",
+            "mouthSmileLeft",
+            "mouthSmileRight",
+            "mouthStretchLeft",
+            "mouthStretchRight",
+            "mouthUpperUpLeft",
+            "mouthUpperUpRight",
+            "noseSneerLeft",
+            "noseSneerRight"
+        };
 
         private void Awake()
         {
             if (BlemModelAsset is null)
-                Debug.Log("The BlemBarracudaRunner does not have a reference to a BLEM model to perform inference on! Inference will fail!");
+                Debug.LogWarning("The BlemBarracudaRunner does not have a reference to a BLEM model to perform inference on! Inference will fail!");
+            
+            if (m_PlayerController is null)
+                Debug.LogWarning("The provided player controller is null! No expressions will be updated by the model!");
             
             m_Model = ModelLoader.Load(BlemModelAsset);
             m_Worker = WorkerFactory.CreateWorker(WorkerFactory.Type.Auto, m_Model);
-            
-            // Cache the individual headers for lookup.
-            s_CsvCategoryColumns = new List<string>();
-            IEnumerable<string> splitCategoryHeaders = MEDIA_PIPE_CATEGORIES_CSV_HEADER.Split(",").Distinct();
-            foreach (string header in splitCategoryHeaders)
-            {
-                // Skip the timestamp and label features, which are filled in manually.
-                if (header is "timestamp" or "label") 
-                    continue;
-                
-                s_CsvCategoryColumns.Add(header);
-            }
         }
 
         private void Update()
@@ -132,7 +180,11 @@ namespace FaceDetection
         private void OnDestroy()
             => m_Worker.Dispose();
 
-        public void CheckExpressionNextFrame(FaceLandmarkerResult result)
+        /// <summary>
+        /// Queues up a <see cref="FaceLandmarkerResult"/> for inference in the coming frames.
+        /// </summary>
+        /// <param name="result">Data provided from the MediaPipe API that is consumed by BLEM.</param>
+        public void QueueLandmarkerResultForInference(FaceLandmarkerResult result)
         {
             if (result.faceBlendshapes is null)
                 return;
@@ -178,10 +230,10 @@ namespace FaceDetection
         
             // Add each of the scores.
             List<float> featureScores = new();
-            foreach (string csvColumnName in s_CsvCategoryColumns)
+            foreach (string categoryName in s_MediaPipeCategoriesOrdered)
             {
                 // We will always have to skip the "_neutral" category.
-                if (!blendShapeInfos.TryGetValue(csvColumnName, out float score))
+                if (!blendShapeInfos.TryGetValue(categoryName, out float score))
                     continue;
                 featureScores.Add(score);
             }

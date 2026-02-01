@@ -160,7 +160,7 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
       _faceLandmarkerResultAnnotationController.DrawLater(result);
       
 #if true 
-      m_BlemBarracudaRunner.CheckExpressionNextFrame(result);
+      m_BlemBarracudaRunner.QueueLandmarkerResultForInference(result);
 #endif
     }
 

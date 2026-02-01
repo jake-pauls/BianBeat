@@ -173,7 +173,7 @@ namespace FaceDetection
             
             // The BLEM runner will update the player's expression as it performs inference,
             // so just give it the MediaPipe results and let it do work. :)
-            m_BlemBarracudaRunner.CheckExpressionNextFrame(result);
+            m_BlemBarracudaRunner.QueueLandmarkerResultForInference(result);
         }
 
         /// <summary>
