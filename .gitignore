@@ -101,3 +101,6 @@ InitTestScene*.unity*
 # JetBrains
 .idea/**/*
 
+# Virtual Environment
+**/.venv/**/*
+**/__pycache__/**/*

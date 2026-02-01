@@ -158,6 +158,18 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
     private void OnFaceLandmarkDetectionOutput(FaceLandmarkerResult result, Image image, long timestamp)
     {
       _faceLandmarkerResultAnnotationController.DrawLater(result);
+      
+#if true
+      m_ExpressionSampleExporter.RecordFrame(result);
+      m_BlemBarracudaRunner.CheckExpressionNextFrame(result);
+#endif
     }
+
+#if true
+    // Used to record inference data to CSV.
+    [SerializeField] private ExpressionSampleExporter m_ExpressionSampleExporter;
+    // Used to run inference and check expressions using the BLEM model.
+    [SerializeField] private BlemBarracudaRunner m_BlemBarracudaRunner;
+#endif
   }
 }

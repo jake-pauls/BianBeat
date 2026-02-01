@@ -9,8 +9,10 @@ namespace FaceDetection
     [Serializable]
     public enum Expression
     {
-        None = 0,
+        Neutral,
         Happy,
-        Sad
+        Sad,
+        Angry,
+        Shocked
     }
 }
