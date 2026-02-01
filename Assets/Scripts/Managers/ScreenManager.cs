@@ -1,5 +1,9 @@
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.SceneManagement;
+=======
+using System.Collections;
+>>>>>>> 7aa5a50 (Added audio sounds for correct/wrong masks)
 
 public class ScreenManager : MonoBehaviour
 {
