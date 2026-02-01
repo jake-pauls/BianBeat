@@ -696,6 +696,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41deca3259fccc4bb9387fd9783d223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressBar
+--- !u!114 &1779434484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7101368203553831937, guid: 023db6baca6e66742b6d7dd1985a6bfd, type: 3}
+  m_PrefabInstance: {fileID: 123645843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8369c944a6a418243b812ba827a07a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmManager
 --- !u!114 &2049982717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6378448871538518645, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
@@ -1021,10 +1032,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 549139631058836264, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1627902256272870705, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1801326241463303750, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_Name
+      value: CentreYourFaceTextMandarin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389707728578712968, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373626193731335143, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_PlayerController
+      value: 
+      objectReference: {fileID: 70195895}
+    - target: {fileID: 4373626193731335143, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: OnButtonFilled.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373626193731335143, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: OnButtonFilled.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373626193731335143, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: OnButtonFilled.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373626193731335143, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: OnButtonFilled.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963990034761063532, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_Name
+      value: CentreYourFaceText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511937967335777775, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_TargetSpawner
+      value: 
+      objectReference: {fileID: 1779434484}
     - target: {fileID: 7323681569567026367, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1109,12 +1160,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 11.120056
       objectReference: {fileID: 0}
+    - target: {fileID: 8046146009509518534, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_Name
+      value: HappyMaskMaskFillButton
+      objectReference: {fileID: 0}
     - target: {fileID: 9049184208927033198, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7029408764105316375, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}

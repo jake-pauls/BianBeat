@@ -51,6 +51,13 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     private List<float> m_SpawnTimes = new();
 
+    public void StartGame()
+    {
+        // Start the countdown.
+        m_GameStartTime = Time.time + m_CountdownDuration;
+        StartCoroutine(CountdownCoroutine());
+    }
+
     private void Awake()
     {
         if (m_TargetMaskPrefabs is null)
@@ -74,11 +81,6 @@ public class TargetSpawner : MonoBehaviour
 
         m_SpawnTimes.Clear(); // Clear the list of spawn times.
         CalculateSpawnTimes(); // Calculate spawn times based on the beatmap data.
-
-        // Start the countdown.
-        m_GameStartTime = Time.time + m_CountdownDuration;
-        StartCoroutine(CountdownCoroutine());
-        // AudioManager.PlaySound(AudioType.BEATMAPMUSIC);
     }
 
     private void Update()
