@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         TargetableMask mask = intersectedObject.GetComponent<TargetableMask>();
         if (mask is not null && mask.ExpressionValue == CurrentExpression)
         {
+            Debug.Log("Target hit!");
             // Destroy the intersected target game object and broadcast that a target was hit.
             Destroy(intersectedObject);
             OnTargetHit?.Invoke();

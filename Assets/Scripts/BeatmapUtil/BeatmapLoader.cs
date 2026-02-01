@@ -2,6 +2,8 @@ using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System;
+using FaceDetection;
 
 
 public static class BeatmapLoader
@@ -39,8 +41,15 @@ public static class BeatmapLoader
             {
                 if (float.TryParse(values[0], out float timestamp))
                 {
-                    Debug.Log($"Adding note with timestamp: {timestamp}");
-                    beatmap.notes.Add(new BeatmapNote { timestamp = timestamp });
+                    if (Enum.TryParse(values[2], out Expression expression))
+                    {
+                        Debug.Log($"Adding note with timestamp: {timestamp} and expression: {expression}");
+                        beatmap.notes.Add(new BeatmapNote { timestamp = timestamp, expression = expression });
+                    }
+                    else
+                    {
+                        Debug.LogError($"Invalid expression: {values[1]}");
+                    }
                 }
             }
         }
