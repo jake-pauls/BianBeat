@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Mediapipe.Tasks.Components.Containers;
 using Mediapipe.Tasks.Vision.FaceLandmarker;
 using Unity.Barracuda;
 using UnityEngine;
@@ -36,6 +37,9 @@ namespace FaceDetection
 
         private Queue<float[]> m_InferenceQueue = new();
         private float[] m_SmoothedProbabilities = new float[(int)Expression.Max];
+        
+        private static List<string> s_CsvCategoryColumns;
+        private const string MEDIA_PIPE_CATEGORIES_CSV_HEADER = "browDownLeft,browDownRight,browInnerUp,browOuterUpLeft,browOuterUpRight,cheekPuff,cheekSquintLeft,cheekSquintRight,eyeBlinkLeft,eyeBlinkRight,eyeLookDownLeft,eyeLookDownRight,eyeLookInLeft,eyeLookInRight,eyeLookOutLeft,eyeLookOutRight,eyeLookUpLeft,eyeLookUpRight,eyeSquintLeft,eyeSquintRight,eyeWideLeft,eyeWideRight,jawForward,jawLeft,jawOpen,jawRight,mouthClose,mouthDimpleLeft,mouthDimpleRight,mouthFrownLeft,mouthFrownRight,mouthFunnel,mouthLeft,mouthLowerDownLeft,mouthLowerDownRight,mouthPressLeft,mouthPressRight,mouthPucker,mouthRight,mouthRollLower,mouthRollUpper,mouthShrugLower,mouthShrugUpper,mouthSmileLeft,mouthSmileRight,mouthStretchLeft,mouthStretchRight,mouthUpperUpLeft,mouthUpperUpRight,noseSneerLeft,noseSneerRight";
 
         private void Awake()
         {
@@ -44,6 +48,18 @@ namespace FaceDetection
             
             m_Model = ModelLoader.Load(BlemModelAsset);
             m_Worker = WorkerFactory.CreateWorker(WorkerFactory.Type.Auto, m_Model);
+            
+            // Cache the individual headers for lookup.
+            s_CsvCategoryColumns = new List<string>();
+            IEnumerable<string> splitCategoryHeaders = MEDIA_PIPE_CATEGORIES_CSV_HEADER.Split(",").Distinct();
+            foreach (string header in splitCategoryHeaders)
+            {
+                // Skip the timestamp and label features, which are filled in manually.
+                if (header is "timestamp" or "label") 
+                    continue;
+                
+                s_CsvCategoryColumns.Add(header);
+            }
         }
 
         private void Update()
@@ -124,7 +140,7 @@ namespace FaceDetection
             // Flatten this result into the input features. Using the exporter function ensures that the score
             // array is in-line with the data the model was trained on. It also ensures that the '_neutral' feature
             // does not end up here, which is dumped by MediaPipe by default.
-            float[] features = ExpressionSampleExporter.GetFeaturesFromResultMatchingModelData(result);
+            float[] features = GetFeaturesFromResultMatchingModelData(result);
             m_InferenceQueue.Enqueue(features);
         }
         
@@ -145,5 +161,32 @@ namespace FaceDetection
 
             return exp;
         } 
+
+        /// <summary>
+        /// Retrieves the feature scores for the blend shape categories reported by the MediaPipe API as part of a single <see cref="FaceLandmarkerResult"/>.
+        /// </summary>
+        /// <param name="result">Result from one frame of inference reported by the MediaPipe API.</param>
+        /// <returns>Flattened set of scores, without the '_neutral' blend shape category, extracted from the result.</returns>
+        /// <remarks>
+        /// This function assumes that <paramref name="result"/> and it's contained blend shape data is non-null.
+        /// </remarks>
+        public static float[] GetFeaturesFromResultMatchingModelData(FaceLandmarkerResult result)
+        {
+            IEnumerable<Category> categories = result.faceBlendshapes.SelectMany(c => c.categories);
+            Dictionary<string, float> blendShapeInfos = BlendShapeInfo.CreateBlendShapeInfosFromCategories(categories)
+                .ToDictionary(b => b.Name, b => b.Score);
+        
+            // Add each of the scores.
+            List<float> featureScores = new();
+            foreach (string csvColumnName in s_CsvCategoryColumns)
+            {
+                // We will always have to skip the "_neutral" category.
+                if (!blendShapeInfos.TryGetValue(csvColumnName, out float score))
+                    continue;
+                featureScores.Add(score);
+            }
+
+            return featureScores.ToArray();
+        }
     }
 }

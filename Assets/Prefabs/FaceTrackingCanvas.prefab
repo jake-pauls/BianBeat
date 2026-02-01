@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236211148819991957}
-  - component: {fileID: 898465797165553987}
+  - component: {fileID: 4818997015365840548}
+  - component: {fileID: 5592602992078325629}
   m_Layer: 0
   m_Name: Solution
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3219772998790486011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &898465797165553987
+--- !u!114 &4818997015365840548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +42,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 7725607950982693004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78fe4f7b7ad763b02aa042ef4c50ff6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b4336dcd077dc94fbb1a67667da4632, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceLandmarkerRunner
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95, type: 3}
   screen: {fileID: 789711893605890921}
   runningMode: 0
-  _faceLandmarkerResultAnnotationController: {fileID: 5492010210008248929}
+  PlayerController: {fileID: 0}
+  m_FaceLandmarkerResultAnnotationController: {fileID: 5492010210008248929}
+  m_BlemBarracudaRunner: {fileID: 5592602992078325629}
+--- !u!114 &5592602992078325629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725607950982693004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961100a50b9141844af92d59fd65f659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceDetection.BlemBarracudaRunner
+  BlemModelAsset: {fileID: 5022602860645237092, guid: 6a409b3f64305844b96617483799395a, type: 3}
+  MinimumConfidence: 0.815
+  EnterThreshold: 0.84
+  ExitThreshold: 0.92
+  m_PlayerController: {fileID: 0}
 --- !u!1 &7784390282907668035
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,10 +261,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8571076843237194833, guid: 140d1d2c406167c50819d89f86d9092e, type: 3}
-      propertyPath: _baseRunner
-      value: 
-      objectReference: {fileID: 898465797165553987}
     - target: {fileID: 8571076843980202029, guid: 140d1d2c406167c50819d89f86d9092e, type: 3}
       propertyPath: contents
       value: 

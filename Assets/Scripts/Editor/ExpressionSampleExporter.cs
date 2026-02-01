@@ -4,14 +4,19 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using FaceDetection;
 using Mediapipe.Tasks.Components.Containers;
 using Mediapipe.Tasks.Vision.FaceLandmarker;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace FaceDetection
+namespace Editor
 {
+    /// <summary>
+    /// Editor-only MonoBehaviour that will record data yielded by <see cref="FaceLandmarkerResult"/> from the MediaPipe
+    /// API. Nothing in this class should be referenced or used at runtime or in a Release build of the game.
+    /// </summary>
     public class ExpressionSampleExporter : MonoBehaviour
     {
         [Header("Recording")] 
@@ -52,7 +57,6 @@ namespace FaceDetection
             }
         }
         
-#if DEBUG
         /// <summary>
         /// Records a single frame of data to a CSV string builder. Entire list of data is dumped to the CSV file <see cref="OnApplicationQuit"/>.
         /// </summary>
@@ -74,7 +78,7 @@ namespace FaceDetection
             
             // Take the incoming categories and convert them to serializable blend shapes.
             IEnumerable<Category> categories = result.faceBlendshapes.SelectMany(c => c.categories);
-            Dictionary<string, float> blendShapeInfos = CreateBlendShapeInfosFromCategories(categories)
+            Dictionary<string, float> blendShapeInfos = BlendShapeInfo.CreateBlendShapeInfosFromCategories(categories)
                 .ToDictionary(b => b.Name, b => b.Score);
 
             // TODO: We write to the data right away to avoid keeping it in memory. However, this lock sucks.
@@ -106,36 +110,7 @@ namespace FaceDetection
                 }
             }
         }
-#endif
-
-        /// <summary>
-        /// Retrieves the feature scores for the blend shape categories reported by the MediaPipe API as part of a single <see cref="FaceLandmarkerResult"/>.
-        /// </summary>
-        /// <param name="result">Result from one frame of inference reported by the MediaPipe API.</param>
-        /// <returns>Flattened set of scores, without the '_neutral' blend shape category, extracted from the result.</returns>
-        /// <remarks>
-        /// This function assumes that <paramref name="result"/> and it's contained blend shape data is non-null.
-        /// </remarks>
-        public static float[] GetFeaturesFromResultMatchingModelData(FaceLandmarkerResult result)
-        {
-            IEnumerable<Category> categories = result.faceBlendshapes.SelectMany(c => c.categories);
-            Dictionary<string, float> blendShapeInfos = CreateBlendShapeInfosFromCategories(categories)
-                .ToDictionary(b => b.Name, b => b.Score);
         
-            // Add each of the scores.
-            List<float> featureScores = new();
-            foreach (string csvColumnName in s_CsvCategoryColumns)
-            {
-                // We will always have to skip the "_neutral" category.
-                if (!blendShapeInfos.TryGetValue(csvColumnName, out float score))
-                    continue;
-                featureScores.Add(score);
-            }
-
-            return featureScores.ToArray();
-        }
-        
-#if DEBUG
         /// <summary>
         /// Called when the application quits, or, leaves game mode.
         /// </summary>
@@ -155,11 +130,7 @@ namespace FaceDetection
             File.WriteAllText(path, m_CsvBuilder.ToString());
             Debug.Log($"Saved emotion data to: {path}");
         }
-#endif
         
-        
-        // TODO: Move this into the 'Editor' folder. Separate concerns in this class.
-#if UNITY_EDITOR
         /// <summary>
         /// Used to export categories from a <see cref="FaceLandmarkerResult"/> to an <see cref="ExpressionSample"/> scriptable object.
         /// Note that this must be called from the main thread, as it writes to, and updates, the asset database.
@@ -170,7 +141,7 @@ namespace FaceDetection
         {
             // Take the incoming categories and convert them to serializable blend shapes.
             IEnumerable<Category> categories = result.faceBlendshapes.SelectMany(c => c.categories);
-            List<BlendShapeInfo> blendShapeInfos = CreateBlendShapeInfosFromCategories(categories);
+            List<BlendShapeInfo> blendShapeInfos = BlendShapeInfo.CreateBlendShapeInfosFromCategories(categories);
         
             // Create a new scriptable object containing the categories and the reference texture.
             var sample = ScriptableObject.CreateInstance<ExpressionSample>();
@@ -186,30 +157,6 @@ namespace FaceDetection
             AssetDatabase.SaveAssets();
         
             Debug.Log($"Created new face sample data from image: {path}");
-        }
-#endif
-        
-        /// <summary>
-        /// Creates a list of <see cref="BlendShapeInfo"/> from a set of categories MediaPipe provides.
-        /// </summary>
-        /// <param name="categories">Enumeration of categories provided by the MediaPipe API.</param>
-        /// <returns>Collection of POCs containing information for each blend shape.</returns>
-        private static List<BlendShapeInfo> CreateBlendShapeInfosFromCategories(IEnumerable<Category> categories)
-        {
-            List<BlendShapeInfo> blendShapeInfos = new();
-        
-            foreach (Category category in categories)
-            {
-                BlendShapeInfo info = new()
-                {
-                    Name = category.categoryName,
-                    Score = category.score,
-                };
-            
-                blendShapeInfos.Add(info);
-            }
-
-            return blendShapeInfos;
         }
     }
 }

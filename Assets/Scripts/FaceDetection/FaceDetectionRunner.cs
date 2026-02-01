@@ -141,14 +141,6 @@ namespace FaceDetection
                         if (taskApi.TryDetect(image, imageProcessingOptions, ref result))
                         {
                             m_FaceLandmarkerResultAnnotationController.DrawNow(result);
-
-#if false
-                        // Set the above ifdef to true when you'd like to export the categories found on the image to a ScriptableObject.
-                        if (imageSource is StaticImageSource staticImageSource)
-                        {
-                            ExpressionSampleExporter.ExportCategoriesToScriptableObject(result, staticImageSource.image);
-                        }
-#endif
                         }
                         else
                         {
@@ -161,11 +153,6 @@ namespace FaceDetection
                                 ref result))
                         {
                             m_FaceLandmarkerResultAnnotationController.DrawNow(result);
-
-#if false
-                        // Set the above ifdef to true when you'd like to export the categories found on the image to a ScriptableObject.
-                        ExpressionSampleExporter.ExportCategoriesToScriptableObject(result, null);
-#endif
                         }
                         else
                         {

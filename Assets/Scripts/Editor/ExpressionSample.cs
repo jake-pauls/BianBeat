@@ -1,7 +1,8 @@
 using System;
+using FaceDetection;
 using UnityEngine;
 
-namespace FaceDetection
+namespace Editor
 {
     /// <summary>
     /// Represents an expression captured from a texture using the MediaPipe API.
