@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using Mediapipe;
@@ -21,6 +22,10 @@ namespace FaceDetection
         
         [SerializeField] 
         private FaceLandmarkerResultAnnotationController m_FaceLandmarkerResultAnnotationController;
+        
+        [SerializeField] 
+        [Tooltip("Used to run inference and check expressions using the BLEM model.")]
+        private BlemBarracudaRunner m_BlemBarracudaRunner;
 
         private TextureFramePool m_TextureFramePool;
         private readonly FaceLandmarkDetectionConfig m_FaceLandmarkerConfig = new();
@@ -178,11 +183,16 @@ namespace FaceDetection
         private void OnFaceLandmarkDetectionOutput(FaceLandmarkerResult result, Image image, long timestamp)
         {
             m_FaceLandmarkerResultAnnotationController.DrawLater(result);
-
-            Expression resultExpression = DetermineExpressionFromResult(result);
-            PlayerController.CurrentExpression = resultExpression;
+            
+            // The BLEM runner will update the player's expression as it performs inference,
+            // so just give it the MediaPipe results and let it do work. :)
+            m_BlemBarracudaRunner.CheckExpressionNextFrame(result);
         }
 
+        /// <summary>
+        /// Old (pre-BLEM) heuristic/idea for detecting emotions on a per-category basis.
+        /// </summary>
+        [Obsolete]
         private Expression DetermineExpressionFromResult(FaceLandmarkerResult result)
         {
             if (result.faceBlendshapes is null || !result.faceBlendshapes.Any())

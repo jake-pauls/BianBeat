@@ -17,7 +17,7 @@ public class TargetableMask : MonoBehaviour
     private void Awake()
     {
         // TODO: Something should probably set the expression value on masks that spawn.
-        ExpressionValue = Expression.Sad;
+        ExpressionValue = Expression.Shocked;
     }
 
     private void Update()

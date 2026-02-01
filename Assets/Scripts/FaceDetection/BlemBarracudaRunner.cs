@@ -13,7 +13,6 @@ namespace FaceDetection
     /// </summary>
     public class BlemBarracudaRunner : MonoBehaviour
     {
-        public bool Check;
         public NNModel BlemModelAsset;
 
         [Header("Confidence Parameters")] 
@@ -29,10 +28,8 @@ namespace FaceDetection
         [SerializeField] 
         private float ExitThreshold = 0.75f; 
 
-        // TODO: Setup when the Barracuda runner goes to the main sccene
-        // [SerializeField] 
-        // private PlayerController m_PlayerController;
-        private Expression m_CachedExpression;
+        [SerializeField] 
+        private PlayerController m_PlayerController;
         
         private IWorker m_Worker;
         private Model m_Model;
@@ -96,22 +93,22 @@ namespace FaceDetection
             
             // 6. Hysteresis
             // Check if we have enough confidence to stay in the same expression.
-            if (m_CachedExpression == expressionValue)
+            if (m_PlayerController.CurrentExpression == expressionValue)
             {
                 // Example: The player was in the 'Happy' state, but now the confidence for 'Happy' has dropped below 40%.
                 // This may yield a more natural shift in emotion: 'Happy' -> 'Neutral' -> 'Sad'.
                 if (confidence < ExitThreshold)
                 {
-                    m_CachedExpression = Expression.Neutral;
-                    Debug.Log($"BLEM exited {expressionValue} as a result of having only {confidence}% confidence.");
+                    m_PlayerController.CurrentExpression = Expression.Neutral;
+                    Debug.Log($"BLEM exited {expressionValue} as a result of having only {confidence * 100}% confidence.");
                 }
             }
             else
             {
                 if (confidence > EnterThreshold)
                 {
-                    m_CachedExpression = expressionValue;
-                    Debug.Log($"BLEM entered {expressionValue}, with {confidence}% confidence.");
+                    m_PlayerController.CurrentExpression = expressionValue;
+                    Debug.Log($"BLEM entered {expressionValue}, with {confidence * 100}% confidence.");
                 }
             }
         }
@@ -121,7 +118,7 @@ namespace FaceDetection
 
         public void CheckExpressionNextFrame(FaceLandmarkerResult result)
         {
-            if (!Check)
+            if (result.faceBlendshapes is null)
                 return;
             
             // Flatten this result into the input features. Using the exporter function ensures that the score
