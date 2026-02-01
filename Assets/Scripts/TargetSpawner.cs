@@ -198,7 +198,7 @@ public class TargetSpawner : MonoBehaviour
         m_GameStarted = true;
         m_GameStartTime = Time.time;
         
-        AudioManager.PlaySound(AudioType.BEATMAPMUSIC);
+        AudioManager.PlaySound(AudioType.BEATMAPMUSIC, 0.6f);
         OnBeatmapMusicStarted.Invoke();
     }
 }

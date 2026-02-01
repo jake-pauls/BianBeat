@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (mask is not null && mask.ExpressionValue == CurrentExpression)
         {
             Debug.Log("Target hit!");
+            AudioManager.PlaySound(AudioType.CORRECTMASK);
             // Destroy the intersected target game object and broadcast that a target was hit.
             Destroy(intersectedObject);
             OnTargetHit?.Invoke();

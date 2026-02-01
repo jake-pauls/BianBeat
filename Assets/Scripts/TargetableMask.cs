@@ -132,6 +132,7 @@ public class TargetableMask : MonoBehaviour
         {
             OnTargetMissed?.Invoke();
             Debug.Log("Target missed!");
+            AudioManager.PlaySound(AudioType.WRONGMASK);
             Destroy(gameObject);
         }
     }
