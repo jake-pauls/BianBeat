@@ -12,7 +12,7 @@ public class TargetSpawner : MonoBehaviour
     
     [SerializeField] 
     [Tooltip("The position where the manager will spawn new targets.")]
-    private Transform m_SpawnPoint;
+    private Transform[] m_SpawnPoints;
 
     [SerializeField]
     [Tooltip("Reference to the player controller.")]
@@ -40,6 +40,8 @@ public class TargetSpawner : MonoBehaviour
     private bool m_isCountingDown = true;
     private bool m_GameStarted = false;
     private int m_CurrentNoteIndex = 0;
+
+    [SerializeField]
     private List<float> m_SpawnTimes = new();
 
     private void Awake()
@@ -47,8 +49,8 @@ public class TargetSpawner : MonoBehaviour
         if (m_TargetPrefab is null)
             Debug.LogWarning("No target prefab has been set for the rhythm manager!");
 
-        if (m_SpawnPoint is null)
-            Debug.LogWarning("No spawn point has been set for the rhythm manager!");
+        if (m_SpawnPoints is null)
+            Debug.LogWarning("No spawn points have been set for the rhythm manager!");
 
         if (m_BeatmapData is null)
             Debug.LogWarning("No beatmap data has been set for the rhythm manager!");
@@ -69,6 +71,7 @@ public class TargetSpawner : MonoBehaviour
         // Start the countdown.
         m_GameStartTime = Time.time + m_CountdownDuration;
         StartCoroutine(CountdownCoroutine());
+        // AudioManager.PlaySound(AudioType.BEATMAPMUSIC);
     }
 
     private void Update()
@@ -87,7 +90,17 @@ public class TargetSpawner : MonoBehaviour
 
     private void SpawnTarget(BeatmapNote note)
     {
-        GameObject target = Instantiate(m_TargetPrefab, m_SpawnPoint);
+        // Randomly select one of the spawn points
+        if (m_SpawnPoints == null || m_SpawnPoints.Length == 0)
+        {
+            Debug.LogWarning("No spawn points available!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, m_SpawnPoints.Length);
+        Transform selectedSpawnPoint = m_SpawnPoints[randomIndex];
+        
+        GameObject target = Instantiate(m_TargetPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
         TargetableMask mask = target.GetComponent<TargetableMask>();
     }
 
@@ -97,25 +110,42 @@ public class TargetSpawner : MonoBehaviour
         if (m_BeatmapData == null || m_PlayerController == null)
             return;
 
-        // Calculate the distance from the spawn point point to player collider.
-        float distance = Vector3.Distance (
-            m_SpawnPoint.position,
-            m_PlayerController.transform.position
-        );
+        if (m_SpawnPoints == null || m_SpawnPoints.Length == 0)
+        {
+            Debug.LogWarning("No spawn points available for distance calculation!");
+            return;
+        }
 
-        // Calculate the time it takes for target to travel from spawn to collider.
-        float travelTime = distance / m_TargetVelocity;
+        // Calculate the maximum distance from any spawn point to player to ensure targets always arrive on time
+        float maxDistance = 0f;
+        foreach (Transform spawnPoint in m_SpawnPoints)
+        {
+            if (spawnPoint != null)
+            {
+                float distance = Vector3.Distance(
+                    spawnPoint.position,
+                    m_PlayerController.transform.position
+                );
+                if (distance > maxDistance)
+                    maxDistance = distance;
+            }
+        }
+
+        // Calculate the time it takes for target to travel from the farthest spawn point to collider.
+        float travelTime = maxDistance / m_TargetVelocity;
         
         // Calculate all spawn times
         foreach (var note in m_BeatmapData.notes)
         {
-            float spawnTime = note.timestamp - travelTime;
+            float spawnTime = note.timestamp - travelTime + 0.5f;
             m_SpawnTimes.Add(spawnTime);
         }
     }
 
     private System.Collections.IEnumerator CountdownCoroutine()
     {
+        AudioManager.PlaySound(AudioType.COUNTDOWN);
+
         //Wait for countdown
         float countdown = m_CountdownDuration;
         while (countdown > 0.0f)
@@ -127,5 +157,7 @@ public class TargetSpawner : MonoBehaviour
         m_isCountingDown = false;
         m_GameStarted = true;
         m_GameStartTime = Time.time;
+        
+        AudioManager.PlaySound(AudioType.BEATMAPMUSIC);
     }
 }
