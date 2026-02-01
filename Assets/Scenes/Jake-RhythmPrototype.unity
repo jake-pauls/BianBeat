@@ -183,6 +183,10 @@ PrefabInstance:
       value: TargetSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 7101368203553831937, guid: 023db6baca6e66742b6d7dd1985a6bfd, type: 3}
+      propertyPath: m_ScreenManager
+      value: 
+      objectReference: {fileID: 639992980}
+    - target: {fileID: 7101368203553831937, guid: 023db6baca6e66742b6d7dd1985a6bfd, type: 3}
       propertyPath: m_PlayerController
       value: 
       objectReference: {fileID: 70195895}
@@ -623,6 +627,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639992980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6511937967335777775, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+  m_PrefabInstance: {fileID: 7979365963785927364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718310dd30ea540469c1176a9457e816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenManager
 --- !u!1001 &709693105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1036,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 716549854053391156, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_PlayerController
+      value: 
+      objectReference: {fileID: 70195895}
     - target: {fileID: 1627902256272870705, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1071,6 +1090,14 @@ PrefabInstance:
     - target: {fileID: 4963990034761063532, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Name
       value: CentreYourFaceText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957703150881789360, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_PlayerController
+      value: 
+      objectReference: {fileID: 70195895}
+    - target: {fileID: 6178405285123027055, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -113.89996
       objectReference: {fileID: 0}
     - target: {fileID: 6511937967335777775, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_TargetSpawner
@@ -1167,6 +1194,14 @@ PrefabInstance:
     - target: {fileID: 9049184208927033198, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107103640905965392, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_Name
+      value: HappyMaskMaskFillButton2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222798805885009693, guid: df6b718ef6921ff4980e8888410fd6b4, type: 3}
+      propertyPath: m_Name
+      value: AngryMaskMaskFillButton2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

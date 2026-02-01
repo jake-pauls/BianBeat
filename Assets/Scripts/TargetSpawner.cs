@@ -40,6 +40,9 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("Countdown duration before the song starts.")]
     private float m_CountdownDuration = 3f;
+
+    [SerializeField] 
+    private ScreenManager m_ScreenManager;
     
     //TODO: Can likely separate out game manager logic instead of having it i the TargetSpawner. Putting it in here for now for convenience.
     private float m_CurrentTime;
@@ -47,6 +50,7 @@ public class TargetSpawner : MonoBehaviour
     // private bool m_isCountingDown = true; // TODO: Might need this on game start perhaps? Not doing anything with it for now.
     private bool m_GameStarted = false;
     private int m_CurrentNoteIndex = 0;
+    private float m_BeatmapDuration;
 
     [SerializeField]
     private List<float> m_SpawnTimes = new();
@@ -81,6 +85,8 @@ public class TargetSpawner : MonoBehaviour
 
         m_SpawnTimes.Clear(); // Clear the list of spawn times.
         CalculateSpawnTimes(); // Calculate spawn times based on the beatmap data.
+
+        m_BeatmapDuration = AudioManager.GetSoundDuration(AudioType.BEATMAPMUSIC);
     }
 
     private void Update()
@@ -94,6 +100,12 @@ public class TargetSpawner : MonoBehaviour
         {
             SpawnTarget(m_BeatmapData.notes[m_CurrentNoteIndex], m_BeatmapData.notes[m_CurrentNoteIndex].expression);
             m_CurrentNoteIndex++;
+        }
+
+        // Transition to the end game screen once the duration is elapsed.
+        if (currentGameTime >= m_BeatmapDuration)
+        {
+            m_ScreenManager.TransitionToEndGameScreen();
         }
     }
 

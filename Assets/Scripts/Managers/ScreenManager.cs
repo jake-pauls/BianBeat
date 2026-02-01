@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -56,4 +57,16 @@ public class ScreenManager : MonoBehaviour
         
         m_EndGameScreenRoot?.SetActive(true);
     }
+
+    /// <summary>
+    /// "Restarts" the game that just reloads the scene name.
+    /// </summary>
+    public void RestartGame()
+        => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    /// <summary>
+    /// Exits the current game.
+    /// </summary>
+    public void ExitGame()
+        => Application.Quit();
 }
