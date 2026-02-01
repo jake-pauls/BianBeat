@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 02d25416929050b48a8daa1fa302a81f
+guid: e3099c3718ece01418accfa641adcf54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5932817492626530676
-    second: T_UI_Overlay_Left 1_0
+      213: -5566122741415945605
+    second: T_ScoreBarBase_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: T_UI_Overlay_Left 1_0
+      name: T_ScoreBarBase_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 309
-        height: 1080
+        width: 1427
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4716a3d731a955250800000000000000
-      internalID: 5932817492626530676
+      spriteID: b7adda57bd821c2b0800000000000000
+      internalID: -5566122741415945605
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      T_UI_Overlay_Left 1_0: 5932817492626530676
+      T_ScoreBarBase_0: -5566122741415945605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
