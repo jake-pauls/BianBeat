@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5456815299225016778}
   - component: {fileID: 5883069349518707784}
   m_Layer: 0
-  m_Name: TargetableMask
+  m_Name: HappyMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,6 +176,30 @@ MonoBehaviour:
   ExpressionValue: 0
   m_Velocity: 5
   m_MissTimeout: 0.5
+  m_ScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   OnTargetMissed:
     m_PersistentCalls:
       m_Calls: []

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5456815299225016778}
   - component: {fileID: 5883069349518707784}
   m_Layer: 0
-  m_Name: TargetableMask
+  m_Name: ShockedMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

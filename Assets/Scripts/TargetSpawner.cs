@@ -9,7 +9,7 @@ public class TargetSpawner : MonoBehaviour
 {
     [SerializeField] 
     [Tooltip("The prefab that the manager will spawn when the cooldown elapses.")]
-    private GameObject m_TargetPrefab;
+    private GameObject[] m_TargetMaskPrefabs;
     
     [SerializeField] 
     [Tooltip("The position where the manager will spawn new targets.")]
@@ -47,8 +47,8 @@ public class TargetSpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (m_TargetPrefab is null)
-            Debug.LogWarning("No target prefab has been set for the rhythm manager!");
+        if (m_TargetMaskPrefabs is null)
+            Debug.LogWarning("No target prefabs have been set for the rhythm manager!");
 
         if (m_SpawnPoints is null)
             Debug.LogWarning("No spawn points have been set for the rhythm manager!");
@@ -98,10 +98,28 @@ public class TargetSpawner : MonoBehaviour
             return;
         }
 
-        int randomIndex = Random.Range(0, m_SpawnPoints.Length);
-        Transform selectedSpawnPoint = m_SpawnPoints[randomIndex];
+        GameObject target = null;
+        if (expression == Expression.Happy)
+        {
+            Transform happySpawnPoint = m_SpawnPoints[0];
+            target = Instantiate(m_TargetMaskPrefabs[0], happySpawnPoint.position, happySpawnPoint.rotation);
+        }
+        else if (expression == Expression.Sad)
+        {
+            Transform sadSpawnPoint = m_SpawnPoints[1];
+            target = Instantiate(m_TargetMaskPrefabs[1], sadSpawnPoint.position, sadSpawnPoint.rotation);
+        }
+        else if (expression == Expression.Angry)
+        {
+            Transform angrySpawnPoint = m_SpawnPoints[2];
+            target = Instantiate(m_TargetMaskPrefabs[2], angrySpawnPoint.position, angrySpawnPoint.rotation);
+        }
+        else if (expression == Expression.Shocked)
+        {
+            Transform shockedSpawnPoint = m_SpawnPoints[3];
+            target = Instantiate(m_TargetMaskPrefabs[3], shockedSpawnPoint.position, shockedSpawnPoint.rotation);
+        }
 
-        GameObject target = Instantiate(m_TargetPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
         TargetableMask mask = target.GetComponent<TargetableMask>();
         mask.ExpressionValue = expression;
     }
