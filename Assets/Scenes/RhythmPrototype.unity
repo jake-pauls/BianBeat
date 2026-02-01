@@ -182,23 +182,6 @@ MonoBehaviour:
         m_CallState: 2
   CurrentExpression: 0
   m_ControllerCircleCollider: {fileID: 70195896}
-  m_PlayerScoreInput:
-    m_Name: Player Score Input
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: fa1772fd-7b80-477d-97dd-d61b63f8ef43
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 3cc5effa-86df-469f-83c4-f38cf463702f
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Score Input
-      m_Flags: 0
-    m_Flags: 0
 --- !u!58 &70195896
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1024,8 +1007,40 @@ MonoBehaviour:
   _bootstrapPrefab: {fileID: 968918444066301895, guid: 1146a9de09159a948b683e94fb3d3c95, type: 3}
   screen: {fileID: 850808331}
   runningMode: 0
-  m_FaceLandmarkerResultAnnotationController: {fileID: 2129790721}
   PlayerController: {fileID: 70195895}
+  m_FaceLandmarkerResultAnnotationController: {fileID: 2129790721}
+  m_BlemBarracudaRunner: {fileID: 1831119440}
+--- !u!114 &1831119440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831119436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961100a50b9141844af92d59fd65f659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceDetection.BlemBarracudaRunner
+  BlemModelAsset: {fileID: 5022602860645237092, guid: 6a409b3f64305844b96617483799395a, type: 3}
+  MinimumConfidence: 0.815
+  EnterThreshold: 0.84
+  ExitThreshold: 0.92
+  m_PlayerController: {fileID: 70195895}
+--- !u!114 &1831119442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831119436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e429e826b6f794bb92f8160d204106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceDetection.ExpressionSampleExporter
+  Record: 0
+  RecordedExpression: 0
 --- !u!1 &1858219205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1700,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7725607950982693004, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1831119439}
+    - targetCorrespondingSourceObject: {fileID: 7725607950982693004, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831119440}
+    - targetCorrespondingSourceObject: {fileID: 7725607950982693004, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1831119442}
     - targetCorrespondingSourceObject: {fileID: 7189128857259753410, guid: 25293a603754c8242b320cf3c9cfb476, type: 3}
       insertIndex: -1
       addedObject: {fileID: 253796641}

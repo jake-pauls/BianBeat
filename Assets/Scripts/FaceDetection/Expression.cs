@@ -9,8 +9,13 @@ namespace FaceDetection
     [Serializable]
     public enum Expression
     {
-        None = 0,
+        Neutral,
         Happy,
-        Sad
+        Sad,
+        Angry,
+        Shocked,
+        // This should always be at the end of the enumeration.
+        // Note that BLEM does not consider this a valid output label.
+        Max
     }
 }

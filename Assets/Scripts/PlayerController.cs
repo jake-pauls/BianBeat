@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnTargetHit; 
     
     /// <summary>
-    /// The current expression of the player.
+    /// The current expression of the player. Updated by the <see cref="BlemBarracudaRunner"/>.
     /// </summary>
     public Expression CurrentExpression;
     
