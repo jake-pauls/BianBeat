@@ -11,6 +11,7 @@ using FaceDetection;
 public class BeatmapNote
 {
     public float timestamp;
+    public Expression expression;
 }
 
 [CreateAssetMenu(fileName = "BeatmapData", menuName = "Beatmap File")]
