@@ -1,3 +1,4 @@
+using System;
 using FaceDetection;
 using UnityEngine;
 using UnityEngine.Events;
@@ -37,8 +38,6 @@ public class MaskFillButton : MonoBehaviour
         
         if (m_MaskImage is null)
             Debug.LogWarning("No reference to a mask image is set, the mask fill button will fail!");
-        
-        Debug.Log($"Awoke mask with expression: {m_ExpressionToPressButton}");
     }
 
     private void Update()

@@ -31,6 +31,9 @@ public class ScreenManager : MonoBehaviour
     [ContextMenu("Transition to Start Game Screen")]
     public void TransitionToStartScreen()
     {
+        if (m_CurrentScreenGameObject == m_StartGameScreenRoot)
+            return;
+        
         m_CurrentScreenGameObject?.SetActive(false);
         m_CurrentScreenGameObject = m_StartGameScreenRoot;
         
@@ -40,6 +43,9 @@ public class ScreenManager : MonoBehaviour
     [ContextMenu("Transition to Game Screen")]
     public void TransitionToGameScreen()
     {
+        if (m_CurrentScreenGameObject == m_GameScreenRoot)
+            return;
+        
         m_CurrentScreenGameObject?.SetActive(false);
         m_CurrentScreenGameObject = m_GameScreenRoot;
         
@@ -52,6 +58,9 @@ public class ScreenManager : MonoBehaviour
     [ContextMenu("Transition to End Game Screen")]
     public void TransitionToEndGameScreen()
     {
+        if (m_CurrentScreenGameObject == m_EndGameScreenRoot)
+            return;
+        
         m_CurrentScreenGameObject?.SetActive(false);
         m_CurrentScreenGameObject = m_EndGameScreenRoot;
         

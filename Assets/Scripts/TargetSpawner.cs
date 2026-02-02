@@ -49,6 +49,7 @@ public class TargetSpawner : MonoBehaviour
     private float m_GameStartTime;
     // private bool m_isCountingDown = true; // TODO: Might need this on game start perhaps? Not doing anything with it for now.
     private bool m_GameStarted = false;
+    private bool m_GameOver;
     private int m_CurrentNoteIndex = 0;
     private float m_BeatmapDuration;
 
@@ -103,9 +104,10 @@ public class TargetSpawner : MonoBehaviour
         }
 
         // Transition to the end game screen once the duration is elapsed.
-        if (currentGameTime >= m_BeatmapDuration)
+        if (currentGameTime >= m_BeatmapDuration && !m_GameOver)
         {
             m_ScreenManager.TransitionToEndGameScreen();
+            m_GameOver = true;
         }
     }
 
