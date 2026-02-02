@@ -1,17 +1,20 @@
-# BianLian
-Game for Global Game Jam 2026.
+<p align="center">
+    <img src=".github/assets/logo.png" alt="bianbeat">
+</p>
+<p align="center">
+   <i>Submission for Global Game Jam 2026.</i>
+</p>
 
-## Libraries
-[MediaPipeUnityPlugin](https://github.com/homuler/MediaPipeUnityPlugin)
+# Bian Beat
+Bian Beat is a rhythm game that's played with the expressions you make! Smile, frown, scowl, and pogface to the beat. Webcam required.
+
+This game is inspired by Bian Lian (變臉), or "face-changing," a 300-year-old, highly skilled dramatic art form in Chinese Sichuan opera, where performers instantly switch vividly coloured, traditional masks to represent different emotions.
 
 # Requirements
-
 # BianLian
 Game for Global Game Jam 2026.
 
 A rhythm game where you match facial expressions to hit targets on the beat. Use your webcam to make expressions (Happy, Sad, Angry, Shocked) and match them with incoming mask targets!
-
-## Requirements
 
 ### Software
 - **Unity Editor**: Version 6000.3.5f2 (Unity 6)
@@ -26,7 +29,6 @@ A rhythm game where you match facial expressions to hit targets on the beat. Use
   - The game uses your webcam feed to detect facial expressions in real-time
 
 ## Game Mechanics
-
 ### Core Gameplay
 1. **Target Spawning**: Mask targets spawn from different spawn points based on the beatmap timing
 2. **Expression Matching**: Each target requires a specific facial expression:
@@ -50,9 +52,9 @@ A rhythm game where you match facial expressions to hit targets on the beat. Use
 - Supports 5-frame temporal analysis for smoother expression recognition
 
 ## Environment Setup
-
 ### Pre-built Executable
 A Windows build is available on the [GGJ page](https://globalgamejam.org/games/2026/mask-game-5) 
 
 ## Libraries
 - [MediaPipeUnityPlugin](https://github.com/homuler/MediaPipeUnityPlugin) - Real-time face detection and landmark tracking
+- [Unity Barracuda](https://docs.unity3d.com/Packages/com.unity.barracuda@1.0/manual/index.html) - Provides inference in Unity in real-time
